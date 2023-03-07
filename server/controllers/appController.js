@@ -1,7 +1,26 @@
 
+import UserModel from "../model/user.model.js";
+
 // POST: http://localhost:8080/api/register
 export async function register(req, res) {
-    res.json('register route');
+    try {
+        const { username, password, profile, email } = req.body;
+
+        // check the existing user
+
+        const existUsername = new Promise((resolve, reject) => {
+            UserModel.findOne({ username }, function (err, user) {
+                if (err) reject(new Error(err))
+                if (user) reject({ error: 'Please use unique username' });
+
+                resolve();
+            })
+        });
+
+    } catch (error) {
+        return res.status(500).send(error);
+
+    }
 }
 
 // POST: http://localhost:8080/api/login
