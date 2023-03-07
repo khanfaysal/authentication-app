@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import connect from './database/conn.js';
+import router from './router/route.js';
 
 const app = express();
 
@@ -17,6 +18,11 @@ const port = 8080;
 app.get('/', (req, res) => {
     res.status(201).json('Home get request')
 })
+
+// router api
+// To load the middleware function, call app.use()
+
+app.use('/api', router)
 
 // start server valid when only valid connection
 
