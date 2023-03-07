@@ -1,6 +1,6 @@
 
 import UserModel from "../model/user.model.js";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 
 // POST: http://localhost:8080/api/register
 /* @param : {
